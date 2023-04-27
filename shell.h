@@ -83,4 +83,9 @@ int tocd(arg_t *);
 
 ssize_t get_input(arg_t *);
 void sigintHandler(int);
+
+char **get_environ(info_t *);
+int _setenv(info_t *, char *, char *);
+int _unsetenv(info_t *, char *);
+
 #endif /* SHELL_H */
