@@ -1,5 +1,3 @@
-# C - Simple Shell Project
+#C - Simple Shell
 
-Created by Olojede Ezekiel and Amos Abdulquadri
-
-
+A project by Ezekiel Olojede and Quadri Amosun

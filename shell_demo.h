@@ -12,4 +12,9 @@
 /* BUILT-IN FUNCTIONS */
 void change_directory(char **arg);
 
+/* env.c */
+char **get_environ(info_t *info);
+int _setenv(info_t *info, char *var, char *value);
+int _unsetenv(info_t *info, char *var);
+
 #endif /* SHELL_DEMO_H */
