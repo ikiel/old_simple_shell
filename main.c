@@ -6,8 +6,9 @@
  */
 int main(void)
 {
-	int read, should_run = 1;
-	char *str = NULL, **args = NULL;
+	int read, length, should_run = 1;
+	char *str = NULL;
+	char **args;
 	size_t len = 0;
 	pid_t child_pid;
 
@@ -18,12 +19,11 @@ int main(void)
 
 		read = getline(&str, &len, stdin);
 		if (read == -1)
-		{
 			perror("getline");
-			free(str);
-		}
-		if (str[len] == '\n')
-			str[len] = '\0';
+		length = _strlen(str);
+		if (str[length - 1] == '\n')
+			str[length - 1] = '\0';
+		args = malloc(sizeof(char *) * len);
 		tokenize(str, args);
 
 		child_pid = fork();
@@ -31,10 +31,9 @@ int main(void)
 			perror("fork");
 		else if (child_pid == 0)
 		{
-			if (execve(args[0], args, NULL) == -1)
+			if (execve(args[0], args, environ) == -1)
 			{
 				perror("execve");
-				free(str);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -42,6 +41,7 @@ int main(void)
 			wait(NULL);
 	}
 	free(str);
+	free(args);
 
 	return (0);
 }

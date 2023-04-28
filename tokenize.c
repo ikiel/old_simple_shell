@@ -11,7 +11,7 @@ void tokenize(char *str, char **args)
 	int i = 0;
 
 	token = strtok(str, " ");
-	while (token)
+	while (token != NULL)
 	{
 		args[i] = token;
 		token = strtok(NULL, " ");

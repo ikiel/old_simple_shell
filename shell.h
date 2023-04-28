@@ -28,5 +28,6 @@ void _puts(char *str);
 void prompt(char *str);
 char *_strcpy(char *dest, char *src);
 int _putchar(char c);
+int _strlen(char *s);
 
 #endif
