@@ -7,10 +7,10 @@
 int main(void)
 {
 	int read, should_run = 1;
-	char *str = NULL, *token, *dup_str;
-	char **args;
-	ssize_t len = 0;
-	pid_t child_pid, parent_id;
+	char *str = NULL;
+	char **args = NULL;
+	size_t len = 0;
+	pid_t child_pid;
 
 	while (should_run)
 	{
@@ -19,9 +19,12 @@ int main(void)
 
 		read = getline(&str, &len, stdin);
 		if (read == -1)
+		{
 			perror("getline");
-		str[strcspn(str, "\n")];
-		dup_str = strdup(str);
+			free (str);
+		}
+		if (str[len] == '\n')
+			str[len] = '\0';
 		tokenize(str, args);
 
 		child_pid = fork();
@@ -35,6 +38,7 @@ int main(void)
 			{
 				perror("execve");
 				exit(EXIT_FAILURE);
+				free(str);
 			}
 		}
 		else
@@ -42,4 +46,8 @@ int main(void)
 			wait(NULL);
 		}
 	}
+
+	free(str);
+
+	return (0);
 }

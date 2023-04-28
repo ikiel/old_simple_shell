@@ -7,7 +7,7 @@
  *
  * Return: result of getline
  */
-int readline(char *str, ssize_t len)
+int readline(char *str, size_t len)
 {
 	int read;
 

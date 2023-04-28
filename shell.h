@@ -19,7 +19,7 @@ extern char **environ;
 #define BUF_FLUSH -1
 
 /* getline.c */
-int readline(char *str, ssize_t len);
+int readline(char *str, size_t len);
 char *remove_newline(char *str);
 void tokenize(char *str, char **args);
 
