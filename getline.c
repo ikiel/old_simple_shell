@@ -19,7 +19,6 @@ int readline(char *str, ssize_t len)
 /**
  * remove_newline - removes newline character from text
  * @str: the text
- * @len: the length of the text
  *
  * Return: text without '\n'
  */
@@ -27,6 +26,7 @@ char *remove_newline(char *str)
 {
 	char newline[516];
 	int i = 0, j = 0;
+
 	while (str[i] != '\0')
 	{
 		if (str[i] != '\n')

@@ -2,7 +2,6 @@
 
 /**
  * main - the main shell
- * 
  * Return: Always 0 (success)
  */
 int main(void)
