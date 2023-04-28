@@ -7,8 +7,7 @@
 int main(void)
 {
 	int read, should_run = 1;
-	char *str = NULL;
-	char **args = NULL;
+	char *str = NULL, **args = NULL;
 	size_t len = 0;
 	pid_t child_pid;
 
@@ -21,7 +20,7 @@ int main(void)
 		if (read == -1)
 		{
 			perror("getline");
-			free (str);
+			free(str);
 		}
 		if (str[len] == '\n')
 			str[len] = '\0';
@@ -29,24 +28,19 @@ int main(void)
 
 		child_pid = fork();
 		if (child_pid == -1)
-		{
 			perror("fork");
-		}
 		else if (child_pid == 0)
 		{
 			if (execve(args[0], args, NULL) == -1)
 			{
 				perror("execve");
-				exit(EXIT_FAILURE);
 				free(str);
+				exit(EXIT_FAILURE);
 			}
 		}
 		else
-		{
 			wait(NULL);
-		}
 	}
-
 	free(str);
 
 	return (0);
