@@ -14,14 +14,13 @@ int main(void)
 
 	while (should_run)
 	{
-		printf("$ ");
+		prompt("$ ");
 		fflush(stdout);
 
 		read = getline(&str, &len, stdin);
 		if (read == -1)
 			perror("getline");
 		str[strcspn(str, "\n")];
-
 		dup_str = strdup(str);
 		tokenize(str, args);
 

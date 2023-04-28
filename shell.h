@@ -18,8 +18,15 @@ extern char **environ;
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
 
+/* getline.c */
 int readline(char *str, ssize_t len);
 char *remove_newline(char *str);
 void tokenize(char *str, char **args);
+
+/* string_functions.c */
+void _puts(char *str);
+void prompt(char *str);
+char *_strcpy(char *dest, char *src);
+int _putchar(char c);
 
 #endif
