@@ -160,4 +160,16 @@ int isDelim(char c, char *delim);
 char *_strtok(char *str, char *delim, char **savePtr);
 
 
+/* env.c */
+char **get_environ(info_t *);
+int _setenv(info_t *, char *, char *);
+int _unsetenv(info_t *, char *);
+
+/* myenv.c */
+int _myenv(info_t *);
+int _mysetenv(info_t *);
+int _myunsetenv(info_t *);
+char *_getenv(info_t *, const char *);
+int populate_env_list(info_t *);
+
 #endif
